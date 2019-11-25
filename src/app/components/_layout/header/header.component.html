@@ -1,0 +1,24 @@
+<div class="header-container" style="width: 100% !important; justify-content: space-between; ;">
+    <div class="logo-container">
+        <a href="#" class="sidebar-toggle">
+            <nb-icon icon="menu-2-outline"></nb-icon>
+        </a>
+        <a class="logo" href="#">SAS</a>
+    </div>
+    <div class="action-container">
+        <nb-actions size="small">
+            <!-- Eva Icons -->
+            <nb-action [nbPopover]="template"
+                nbPopoverPlacement="right" class="control-item" icon="more-vertical-outline"></nb-action>
+            <!-- <nb-action class="control-item" icon="bell-outline"></nb-action> -->
+        </nb-actions>
+    </div>
+</div>
+
+<ng-template #template>
+    <nb-card class="popover-card">
+        <nb-card-body>
+                <button nbButton ghost (click)="cerrarSesion()">Cerrar sesion</button>
+        </nb-card-body>
+    </nb-card>
+</ng-template>

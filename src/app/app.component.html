@@ -1,0 +1,54 @@
+<!-- <nb-layout center>
+
+  <nb-layout-header fixed>
+    <app-header></app-header>
+  </nb-layout-header>
+  
+  <nb-sidebar></nb-sidebar>
+
+  <nb-layout-column>
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+
+</nb-layout> -->
+<nb-layout windowMode *ngIf="!logged">
+    <nb-layout-column>
+
+      <app-login></app-login>
+    </nb-layout-column>
+
+</nb-layout>
+<nb-layout windowMode *ngIf="logged">
+
+  <nb-layout-header fixed >
+    <app-header style="width: 100% !important;"></app-header>
+  </nb-layout-header>
+
+  <nb-sidebar class="menu-sidebar" tag="menu-sidebar" responsive>
+    <app-menu></app-menu>
+  </nb-sidebar>
+
+  <nb-layout-column>
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+  <!-- <ng-container *ngIf="!logged">
+    <app-login></app-login>
+
+  </ng-container>
+
+  <ng-container *ngIf="logged">
+
+    <nb-layout-header fixed>
+      <app-header style="width: 100% !important;"></app-header>
+    </nb-layout-header>
+
+    <nb-sidebar class="menu-sidebar" tag="menu-sidebar" responsive>
+      <app-menu></app-menu>
+    </nb-sidebar>
+
+    <nb-layout-column>
+      <router-outlet></router-outlet>
+    </nb-layout-column>
+  </ng-container> -->
+
+</nb-layout>

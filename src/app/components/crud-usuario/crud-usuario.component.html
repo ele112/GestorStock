@@ -1,0 +1,21 @@
+<nb-card>
+    <nb-card-header>
+        Usuarios
+    </nb-card-header>
+
+    <nb-card-body >
+        <div style="width: 100%; justify-content: center;" align="center">
+            <div class="row wrapper-rol">
+                <div class="col-md-4 col-sm-12">Administrador: <strong>1</strong> </div>
+                <div class="col-md-4 col-sm-12">Vendedor     : <strong>2</strong> </div>
+                <div class="col-md-4 col-sm-12">Bodeguero    : <strong>3</strong> </div>
+            </div>
+            <p style="font-size: 8px; " align="center">Defina el rol según el numero asignado en la presente tabla</p>
+        </div>
+        <ng2-smart-table [settings]="settings" [source]="source" 
+        (createConfirm)="onCreateConfirm($event)"
+        (editConfirm)="onEditConfirm($event)"
+        (deleteConfirm)="onDeleteConfirm($event)">
+        </ng2-smart-table>
+    </nb-card-body>
+</nb-card>

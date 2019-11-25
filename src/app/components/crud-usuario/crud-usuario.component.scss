@@ -1,0 +1,15 @@
+@import '../../@theme/styles/themes.scss';
+
+@include nb-install-component() {
+  nb-card {
+    transform: translate3d(0, 0, 0);
+  }
+}   
+
+.wrapper-rol{
+    width: 70%;
+    padding: 20px;
+    border: 1px dotted rgb(8, 119, 209);
+    background: rgb(243, 250, 255);
+
+}

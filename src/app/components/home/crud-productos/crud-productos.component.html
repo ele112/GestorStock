@@ -1,0 +1,137 @@
+<!-- <p>crud-productos works!</p> -->
+<ngx-loading [show]="loading" [config]="{animationType: ngxLoadingAnimationTypes.cubeGrid, backdropBorderRadius: '3px', fullScreenBackdrop:true }"></ngx-loading>
+
+<div class="container">
+    <div class="row" style="width: 100%;" align="left">
+        
+        <div *ngFor="let item of productos" class="col-sm-12 col-md-3"
+            style="display: inline-block; justify-content: space-between">
+            <ng-container  *ngIf="item.tipo == 'nuevo'; else productTemplate">
+                <nb-card class="new-product"  (click)="openProduct('', 'new')">
+                    <!-- <i class="nb-plus"></i> -->
+                    <label class="txt-new">AGREGAR</label>
+                </nb-card>
+            </ng-container> 
+            <ng-template #productTemplate>
+                <nb-card class="product-content" align="center" (click)="openProduct(item, 'edit')">
+                    <div class="box-ctn">
+                        <label *ngIf="item.img == null" style="font-size: 15px; font-weight: bold;">{{item.titulo}}</label>
+                        <img *ngIf="item.img != null" [src]="item.img" class="img" alt="">
+                    </div>
+                    <div class="footer-card" align="left" style="padding: 2px" [style.border-bottom-color]="item.color">
+                        <div class="row">
+                            <div class="col-6">
+                                <label style="font-size: 12px; font-weight: bold;">Producto</label>
+                            </div>
+                            <div class="col-6" align="right"> <label
+                                    style="font-size: 12px; font-weight: bold;">{{item.stock}}</label>&nbsp;<label
+                                    style="font-size: 8px">Uni</label></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6" style="font-size: 10px;">{{ item.categoria }}</div>
+                            <div class="col-6" align="right" style="font-size: 12px; font-weight: bold;">{{item.precio | currency: 'CLP'}}</div>
+                        </div>
+                    </div>
+                </nb-card>
+            </ng-template>
+
+
+        </div>
+    </div>
+</div>
+
+<ng-template #refModalModificar let-c="close" let-d="dismiss">
+
+    <nb-card style="width: 700px;">
+        <nb-card-header align="center">
+            <label for="" *ngIf="temporalInfoMdlObject.accion == 'edit'">
+                Modificar producto
+            </label>
+            <label for="" *ngIf="temporalInfoMdlObject.accion != 'edit'">
+                Agregar producto
+            </label>
+        </nb-card-header>
+        <nb-card-body style="padding: 10px;">
+            <br>
+            <div class="form-container">
+                <div class="row">
+                    <div class="col-12" align="center">
+                        <img [src]="temporalInfoMdlObject.foto" class="image-mdl" *ngIf="temporalInfoMdlObject.foto"><br>
+                        <img src="../../../../assets/picture.png" class="image-mdl" *ngIf="!temporalInfoMdlObject.foto"><br>
+                        <label *ngIf="temporalInfoMdlObject.foto" (click)="temporalInfoMdlObject.foto = null; " >Eliminar imagen</label>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-12">
+                        <span class="obligatorio">*</span>
+                        <label style="font-weight: bold; margin-left: 2px;">Titulo</label>
+                        <input type="text" id="nombreProducto" value="" nbInput fullWidth  placeholder="Ingresa el titulo para el producto"><br>
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <label style="font-weight: bold; margin-left: 2px;">SKU</label>
+                        <input type="text" id="sku" numbersOnly maxlength="10" nbInput value="" fullWidth placeholder="SKU"><br>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <span class="obligatorio">*</span>
+                        <label style="font-weight: bold; margin-left: 2px;">Código</label>
+                        <input type="text" id="codigoProducto"  numbersOnly maxlength="10" value="" nbInput fullWidth  placeholder="Código"><br>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <label style="font-weight: bold; margin-left: 2px;">Imagen</label>                    
+                        <input type="file" accept='image/*' #foto (change)="preview(foto.files)" id="foto" nbInput placeholder="FOTO">
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <span class="obligatorio">*</span>
+                        <label style="font-weight: bold; margin-left: 2px;">Stock</label>
+                        <input type="text" id="stock"  numbersOnly maxlength="5" nbInput value="" fullWidth placeholder="Ingrese el stock actual"><br>
+                    </div>
+                    <br>
+                </div>
+  
+                <br>
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <span class="obligatorio">*</span>
+                        <label style="font-weight: bold; margin-left: 2px;">Precio</label>
+                        <input type="text" id="precioProducto" numbersOnly maxlength="10" nbInput value="" fullWidth placeholder="Ingrese el precio">
+                    </div>
+                    <br>
+                    <div class="col-md-6 col-sm-12">
+                        <span class="obligatorio">*</span>
+                        <label style="font-weight: bold; margin-left: 2px;">Categoría</label><br>
+                        <nb-select fullWidth placeholder="Seleccione" [(selected)]="selectedItem">
+                            <nb-option *ngFor="let item of categorias" [value]="item.nombre">{{item.nombre}}</nb-option>
+                        </nb-select>
+                    </div>
+                    <br>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-12">
+                        <label style="font-weight: bold; margin-left: 2px;">Descripción</label><br>
+                        <textarea type="file" id="descripcionProducto" fullWidth nbInput placeholder="Ingrese una descripción"></textarea>
+                    </div>
+                </div>
+
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-12" padding align="right">
+                    <button nbButton hero status="success" (click)="save()">Guardar</button> &nbsp;&nbsp;
+                    <button *ngIf="temporalInfoMdlObject.accion == 'edit'" nbButton danger (click)="delete()" status="danger">Eliminar</button>&nbsp;&nbsp;
+                    <button nbButton outline (click)="refDialog.close() " status="danger">Cancelar</button>
+                </div>
+            </div>
+        </nb-card-body>
+        <!-- <nb-card-footer align="right">
+            <button type="button" ></button>
+        </nb-card-footer> -->
+      </nb-card>
+
+</ng-template>

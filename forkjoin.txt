@@ -1,0 +1,53 @@
+import { delay, catchError } from 'rxjs/operators';
+import { forkJoin, of, throwError } from 'rxjs';
+
+function aa(){
+  let result = {name: 'World AA', BB: 'AA'}
+  result['prop'] = 'AA'
+  return of(result).pipe(delay(1000));
+}
+
+function bb(){
+  return of({name: 'World BB', BB: 'BB'}).pipe(delay(1000));
+}
+
+function cc(){
+  return of({name: 'World CC', BB: 'CC'}).pipe(delay(1000));
+}
+
+function dd(){
+  return throwError('Errorsito').pipe(catchError(error => of(error)))
+}
+
+const forki = forkJoin(
+  aa(),
+  bb(),
+  cc(),
+  dd()
+)
+
+
+
+
+async function subs() {
+  let _data = [];
+  await forki.subscribe((data) => {
+    console.log(JSON.stringify(data));
+    
+    // return _data;
+
+  })
+}
+
+subs().then((data) => {
+  console.log(data);
+})
+
+
+
+// Contatenacion de arrays
+var foo = [ 'En', 'un', 'lugar', 'de', 'la', 'Mancha' ],
+    bar = [ 'de', 'cuyo', 'nombre', 'no', 'quiero', 'acordarme' ];
+
+console.log(foo.concat(bar));
+console.log([...foo, ...bar]);

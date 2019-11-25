@@ -1,0 +1,51 @@
+
+<div class="container">
+    <br>
+    <div class="row" style="width: 100%;" align="left">
+        <div *ngFor="let item of categorias" class="col-sm-6 col-md-2"
+            style="display: inline-block; justify-content: space-between">
+            <ng-container  *ngIf="item.tipo == 'nuevo'; else categoriaTemplate">
+                <nb-card class="new-product" (click)="openC('new')">
+                    <label class="txt-new">Agregar Categoria</label>
+                </nb-card>
+            </ng-container> 
+            <ng-template #categoriaTemplate>
+                <nb-card class="categ-content" align="center" (click)="openC('', item)">
+                    <label style="font-size: 15px; font-weight: bold;">{{item.nombre}}</label>
+                    <!-- <div class="footer-card" align="left">
+                        HH
+                    </div> -->
+                </nb-card>
+            </ng-template>
+
+
+        </div>
+    </div>
+</div>
+
+
+<ng-template #refModalAgregarCategoria let-c="close" let-d="dismiss">
+    <nb-card style="width: 500px;">
+        <nb-card-header align="center">Agregar una Categoría</nb-card-header>
+        <nb-card-body>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <span class="obligatorio">*</span>
+                        <label style="font-weight: bold; margin-left: 2px;">Nombre de la categoría</label>
+                        <input type="text" id="nombreProducto" value="" maxlength="12" nbInput fullWidth  placeholder="Ingresa el nombre"><br>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-12" padding align="right">
+                        <button nbButton hero status="success" (click)="save()">Guardar</button> &nbsp;&nbsp;
+                        <button nbButton hero danger status="danger" *ngIf="editCat" (click)="delete()">Eliminar</button> &nbsp;&nbsp;
+                        <button nbButton outline (click)="refMdlDialog.close() " status="danger">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </nb-card-body>
+    </nb-card>
+
+</ng-template>

@@ -1,0 +1,39 @@
+<nb-card style="height: 90% !important;">
+    <nb-card-header>
+        Config
+    </nb-card-header>
+
+    <nb-card-body >
+        <br>
+        <div class="form-container">
+
+            <div class="row">
+                <div class="col-12">
+                    <label for="">Stock Critico: </label> &nbsp;    
+                    <input type="text" nbInput numbersOnly maxlength="5" placeholder="Ingrese"> &nbsp;    
+                    <label for="">Stock Medio  : </label> &nbsp;    
+                    <input type="text" nbInput numbersOnly maxlength="5" placeholder="Ingrese">
+                </div>
+            </div> <br>
+
+            <div class="row">
+                <div class="col-12">
+                    <strong>Colores stock</strong> <br><br>
+                    <label for="" style="width: 150px !important;">Color stock critico:</label> &nbsp;    
+                    <input [(colorPicker)]="color" nbInput [style.background]="color" style="width: 50px;"/>
+                    <br><br>
+                    <label for="" style="width: 150px !important;">Color stock Medio: </label> &nbsp;    
+                    <input [(colorPicker)]="color2" nbInput [style.background]="color2" style="width: 50px;"/>
+                    <br>
+                    
+                </div>
+            </div> <br><br><br>
+            <div class="row" >
+                <div class="col-12" align="center">
+                    <button nbButton fullWidth  style="width: 40%;" >Guardar</button>
+                </div>
+            </div>
+
+        </div>
+    </nb-card-body>
+</nb-card>

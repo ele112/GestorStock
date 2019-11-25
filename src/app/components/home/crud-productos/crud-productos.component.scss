@@ -1,0 +1,82 @@
+.product-content{
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 160px;
+    border: 1px solid rgb(221, 221, 221);
+    // height: 200px;
+    // width: 200px;
+    // border-radius: 5px; 
+}
+.new-product{
+    // background-color: rgb(83, 83, 83);
+    background-color: rgb(243, 243, 243);
+    width: 100%;
+    height: 160px;
+    line-height: 160px;
+    text-align: center;
+}
+.txt-new{
+    color: rgb(60, 58, 65);
+    font-size: 15px;
+    font-weight: bold;
+}
+.box-ctn{
+    width: 100%;
+    height: 110px;
+    background-color: rgb(243, 243, 243);
+    line-height: 110px;
+    text-align: center;
+
+}
+.icon{
+    width: 60px;
+    height: 60px;
+    border: 1px solid red;
+}
+.footer-card{
+    height: 50px;
+    border-bottom: 5px solid;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.img{
+    width: 100%;
+    height: 110px;
+    background-size: cover;
+
+}
+
+.container{
+    padding: 15px;
+}
+.modal-content{
+    background: white;
+    border-radius: 5px;
+    width: 700px;
+    height: 500px;
+}
+.modal-header{
+    width: 100% !important;
+
+}
+
+.modal-body{
+    border: 1px solid red;
+}
+
+.text-header-mdl{
+    font-family: nb-theme(font-family-primary);
+    font-weight: bold;
+    color: nb-theme(text-basic-color);
+}
+
+.image-mdl{
+    width: 120px;
+    height: 120px;
+}
+.form-container{
+    max-height: 400px;
+    overflow: auto;
+    overflow-x: hidden;
+}
