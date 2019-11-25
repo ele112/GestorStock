@@ -1,1 +1,1 @@
-"# GestorStock" 
+"GestorStock" 
